@@ -1,24 +1,33 @@
 package com.example.demo.demoTwo;
 
 import com.example.demo.DemoApplication;
+import com.example.demo.entity.UserInfo;
 import com.example.demo.service.UserInfoService;
-import org.junit.jupiter.api.Test;
+import com.example.demo.service.impl.StudentDao;
+import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes={DemoApplication.class},
-        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class DemoTwo {
+import java.sql.ResultSet;
+import java.util.List;
+import java.util.Map;
+
+@SpringBootTest
+public class DemoTwo {
+    @Autowired
+    UserInfoService userInfoService;
 
     @Test
-    void contextLoads() {
-        ApplicationContext acp = new ClassPathXmlApplicationContext("spring.xml");
-        UserInfoService userService = (UserInfoService) acp.getBean("userService");
-        userService.list().forEach(System.out::println);
+    public void contextLoads() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
+        StudentDao dao = (StudentDao) applicationContext.getBean("studentDao");
+        List<Map<String, Object>> re = dao.select();
+        re.forEach(System.out::println);
+        ((ConfigurableApplicationContext) applicationContext).close();
     }
-
 }
