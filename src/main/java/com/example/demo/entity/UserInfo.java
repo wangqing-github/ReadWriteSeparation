@@ -25,4 +25,23 @@ public class UserInfo {
                 with(UserInfo::setUserName,"小王").build();
         System.out.println(userInfo.getId()+"   "+userInfo.getUserName());
     }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "id=" + id +
+                ", loginName='" + loginName + '\'' +
+                ", loginPassword='" + loginPassword + '\'' +
+                ", userName='" + userName + '\'' +
+                ", sex=" + sex +
+                ", age=" + age +
+                ", phone='" + phone + '\'' +
+                ", work='" + work + '\'' +
+                ", address='" + address + '\'' +
+                ", birthday=" + birthday +
+                ", payMoney=" + payMoney +
+                ", balance=" + balance +
+                ", createTime=" + createTime +
+                '}';
+    }
 }

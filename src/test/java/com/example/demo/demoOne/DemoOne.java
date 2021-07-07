@@ -1,26 +1,30 @@
 package com.example.demo.demoOne;
 
-import com.example.demo.DemoApplication;
-import com.example.demo.entity.UserInfo;
-import com.example.demo.service.UserInfoService;
-import com.example.demo.utils.SpringContext;
-import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.List;
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes={DemoApplication.class},
-        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class DemoOne {
+import java.sql.*;
+@SpringBootTest
+public class DemoOne {
 
     @Test
-    void contextLoads() {
-        UserInfoService userInfoService = (UserInfoService) SpringContext.inst().getInterfaceBeans(UserInfoService.class);
-        List<UserInfo> list = userInfoService.list();
-        list.forEach(System.out::println);
+    public void jdbcTest() {
+        String localUrl = "jdbc:mysql://localhost:3306/mytest?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8";
+        String localUser = "root";
+        String localPassword = "root12345";
+        Connection conn = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection(localUrl, localUser, localPassword);
+            Statement stmt = conn.createStatement();
+            String sql = "select * from user_info";
+            ResultSet resultSet = stmt.executeQuery(sql);
+            while(resultSet.next()){
+                System.out.println(resultSet.getString(2));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
