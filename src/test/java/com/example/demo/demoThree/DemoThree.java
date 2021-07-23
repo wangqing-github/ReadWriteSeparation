@@ -19,7 +19,7 @@ import java.util.List;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DemoApplication.class)
-public class UserServiceImplTest {
+public class DemoThree {
 
     @Autowired
     UserInfoService userService;
