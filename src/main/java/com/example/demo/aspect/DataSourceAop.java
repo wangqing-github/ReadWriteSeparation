@@ -59,7 +59,7 @@ public class DataSourceAop {
      * 第四部分 * 代表类名，*代表所有的类
      * 第五部分 *(..) *代表类中的所有方法(..)代表方法里的任何参数
      */
-    @Before("execution(* com.sql.readwrite.mapper..*(..))")
+    @Before("execution(* com.example.demo.mapper..*(..))")
     public void before(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
         //设置数据源
