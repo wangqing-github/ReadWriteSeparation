@@ -1,6 +1,7 @@
 package com.example.demo.demoThree;
 
 import com.example.demo.DemoApplication;
+import com.example.demo.annotation.Master;
 import com.example.demo.entity.UserInfo;
 import com.example.demo.service.UserInfoService;
 import com.example.demo.utils.Builder;
@@ -25,17 +26,13 @@ public class DemoThree {
     UserInfoService userService;
 
     @Test
-    @Transactional
     public void insert() {
         //每天一个装杯小技巧
         UserInfo user = Builder.of(UserInfo::new).
-                with(UserInfo::setId,1).
-                with(UserInfo::setLoginPassword,"111").
-                with(UserInfo::setUserName,"111").
-                with(UserInfo::setId,3).
-                with(UserInfo::setUserName,"小王").build();
+                with(UserInfo::setLoginName, "小王").
+                with(UserInfo::setAge, 18).
+                with(UserInfo::setUserName, "小王").build();
         userService.insert(user);
-        int a = 1/0;
     }
 
     @Test
@@ -44,5 +41,10 @@ public class DemoThree {
         for (UserInfo user : users) {
             System.out.println(user);
         }
+    }
+
+    @Test
+    public void testAnnotation() {
+        userService.testAnnotation();
     }
 }

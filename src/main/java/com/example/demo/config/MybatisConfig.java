@@ -11,9 +11,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
-/**
- * @date 2020/11/16 9:18
- */
 @EnableTransactionManagement
 @Configuration
 public class MybatisConfig {

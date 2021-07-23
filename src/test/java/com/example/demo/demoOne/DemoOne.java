@@ -14,7 +14,7 @@ public class DemoOne {
         String localPassword = "root12345";
         Connection conn = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(localUrl, localUser, localPassword);
             Statement stmt = conn.createStatement();
             String sql = "select * from user_info";
