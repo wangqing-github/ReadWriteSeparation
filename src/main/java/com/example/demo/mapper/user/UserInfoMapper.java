@@ -8,6 +8,4 @@ import java.util.List;
 
 @Repository
 public interface UserInfoMapper extends BaseMapper<UserInfo> {
-
-    List<UserInfo> list();
 }

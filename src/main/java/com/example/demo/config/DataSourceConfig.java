@@ -11,9 +11,6 @@ import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @date 2020/11/16 9:03
- */
 @Configuration
 public class DataSourceConfig {
 
